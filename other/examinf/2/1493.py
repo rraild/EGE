@@ -1,0 +1,12 @@
+import itertools
+
+
+def f(x, y, z, w):
+    return not (z or (w <= y)) or (x <= z)
+
+
+for t in itertools.product([0, 1], repeat=7):
+    t = [[t[0], t[1], 0, 0], [t[2], 0, 1, t[3]], [t[4], 1, t[5], t[6]]]
+    for j in itertools.permutations("xyzw"):
+        if [f(**dict(zip(j, p))) for p in t] == [0, 0, 0]:
+            print(*j)

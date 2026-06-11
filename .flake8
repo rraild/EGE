@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 79
+import-order-style = google
+exclude = .venv, __pycache__, .git
+inline-quotes = "
+extend-ignore = N802, N803, E203, E741, N816, I100, I101, I202

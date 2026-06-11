@@ -1,0 +1,38 @@
+import math
+
+with open("feb/task27-01.02/2B.txt") as f:
+    f.readline()
+    points = [list(map(float, s.replace(",", ".").split())) for s in f]
+    clusters = []
+    epsilon = 0.5
+    while points:
+        clusters.append([points[0]])
+        del points[0]
+        for p1 in clusters[-1]:
+            for p2 in points[:]:
+                if math.dist(p1, p2) < epsilon:
+                    clusters[-1].append(p2)
+                    points.remove(p2)
+
+        if len(clusters[-1]) <= 10:
+            del clusters[-1]
+
+
+best_centroids = [[] for _ in range(len(clusters))]
+
+for i in range(len(clusters)):
+    min_sum_dist = 10**10
+    for x1, y1 in clusters[i]:
+        sum_dist = 0
+        for x2, y2 in clusters[i]:
+            sum_dist += math.dist([x1, y1], [x2, y2])
+
+        if sum_dist < min_sum_dist:
+            min_sum_dist = sum_dist
+            best_centroids[i] = [x1, y1]
+
+
+P_x = sum([x for x, y in best_centroids]) / len(clusters)
+P_y = sum([y for x, y in best_centroids]) / len(clusters)
+P_s = sum([len(cluster) / 16 for cluster in clusters]) * 1000
+print(int((P_x + P_y) * 10_000), P_s)
