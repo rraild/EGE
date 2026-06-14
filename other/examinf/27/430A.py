@@ -1,14 +1,13 @@
 from math import dist
 
 f = open("other/examinf/27/430A.txt")
-f.readline()
 points = [list(map(float, s.replace(",", ".").split())) for s in f]
 
 
 clusters = [[], []]
 
 for x, y in points:
-    if y > 3:
+    if x > 1:
         clusters[0].append([x, y])
 
     else:
@@ -18,7 +17,7 @@ for x, y in points:
 best_centoids = [[], []]
 
 for i in range(len(clusters)):
-    min_sum_dist = 10 * 100000
+    min_sum_dist = float("inf")
     for c1 in clusters[i]:
         sum_dist = 0
         for p1 in clusters[i]:

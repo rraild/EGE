@@ -21,7 +21,7 @@ for x, y in points:
 best_centoids = [[], [], []]
 
 for i in range(len(clusters)):
-    min_sum_dist = 10 * 100000
+    min_sum_dist = float("inf")
     for c1 in clusters[i]:
         sum_dist = 0
         for p1 in clusters[i]:
