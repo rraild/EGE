@@ -1,9 +1,9 @@
 import ipaddress
 
-ip_node = "121.96.174.205"
+ip = "121.96.174.205"
 
 for mask_len in range(32, -1, -1):
-    net = ipaddress.ip_network(f"{ip_node}/{mask_len}", strict=False)
+    net = ipaddress.ip_network(f"{ip}/{mask_len}", strict=False)
 
     count_12_ones = 0
     for ip in net:

@@ -17,6 +17,6 @@ def g(x, s, p, end):
 
 x = 13
 
-# print([s for s in range(1, 94) if g(x, s, 0, [2])]) all->any тк неуд ход
+# print([s for s in range(1, 94) if g(x, s, 0, [2])])
 print([s for s in range(1, 94) if g(x, s, 0, [3])])
 print([s for s in range(1, 94) if g(x, s, 0, [2, 4]) and not g(x, s, 0, [2])])

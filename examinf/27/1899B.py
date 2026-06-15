@@ -1,6 +1,6 @@
 from math import dist
 
-with open("other/examinf/27/1811B.txt") as f:
+with open("examinf/27/1899B.txt") as f:
     points = [
         [
             float(s.replace(",", ".").split()[0]),
@@ -32,11 +32,15 @@ for i in range(len(clusters)):
             min_sum_dist = sum_dist
             best_centroid[i] = p1
 
-dists = []
-for i in range(len(clusters)):
-    for point in clusters[i]:
-        if "L" in point[-1] and "V" == point[-1][-1]:
-            cur_dist = dist(best_centroid[i][0:2], point[0:2])
-            dists.append(cur_dist)
 
-print(int(min(dists) * 10_000), int(max(dists) * 10_000))
+mx = []
+for p in clusters[0]:
+    if p[2][0] == "J" and p[2][2:] == "V":
+        mx.append(p[0])
+
+mn = []
+for p in clusters[2]:
+    if p[2][0] == "J" and p[2][2:] == "V":
+        mn.append(p[1])
+
+print(int(max(mx) * 10_000), int(max(mn) * 10_000))
