@@ -38,14 +38,14 @@ for point in clusters[0]:
     try:
         if int(point[-1][1]) > 7:
             ct1 += 1
-    except:
+    except Exception:
         continue
 
 for point in clusters[1]:
     try:
         if int(point[-1][1]) < 4:
             ct2 += 1
-    except:
+    except Exception:
         continue
 
 print(ct1, ct2)
